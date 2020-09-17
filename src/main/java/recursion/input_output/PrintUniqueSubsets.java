@@ -2,6 +2,14 @@ package recursion.input_output;
 
 import java.util.*;
 
+/**
+ * input : aab
+ * output : {'', aa, a, ab, b, aab}
+ *
+ * ---------
+ * orderedSubSets / sorted : [, a, aa, aab, ab, b]
+ *
+ */
 public class PrintUniqueSubsets {
     public static void main(String[] args) {
         String input = "aab";
