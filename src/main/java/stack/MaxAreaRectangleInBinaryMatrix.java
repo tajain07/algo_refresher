@@ -17,6 +17,7 @@ import java.util.Arrays;
  * 1 1 1 1
  */
 public class MaxAreaRectangleInBinaryMatrix {
+    /*
     public static void main(String[] args) {
         char[][] binaryMatrix = { { '0', '1', '1', '0' }, { '1', '1', '1', '1' }, { '1', '1', '1', '1' }, { '1', '1', '0', '0' } };
 
@@ -48,4 +49,6 @@ public class MaxAreaRectangleInBinaryMatrix {
 
         return maxArea;
     }
+
+     */
 }

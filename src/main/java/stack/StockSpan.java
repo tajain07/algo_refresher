@@ -1,6 +1,5 @@
 package stack;
 
-import javafx.util.Pair;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -10,6 +9,7 @@ import java.util.Stack;
  * https://www.geeksforgeeks.org/the-stock-span-problem/
  */
 public class StockSpan {
+    /*
     public static void main(String[] args) {
         int a[] = { 100, 80, 60, 70, 60, 75, 85 };
         StockSpan stockSpan = new StockSpan();
@@ -43,4 +43,6 @@ public class StockSpan {
 
         return answer;
     }
+
+     */
 }

@@ -1,6 +1,5 @@
 package heap;
 
-import javafx.util.Pair;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TopKFrequentNumbers {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Integer a[] = { 1, 3, 2, 2, 4, 4, 4 };
         int k = 2;
         final int[] ints = topKFrequentNumber(a, k);
@@ -37,5 +36,5 @@ public class TopKFrequentNumbers {
 
         return ans;
     }
-
+*/
 }

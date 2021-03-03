@@ -1,6 +1,5 @@
 package heap;
 
-import javafx.util.Pair;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,6 +8,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FrequencySort {
+    /*
+
     public static void main(String[] args) {
         Integer a[] = { 1, 1, 1, 3, 2, 2, 4 };
         final int[] ints = freqSort(a);
@@ -37,4 +38,6 @@ public class FrequencySort {
 
         return answer;
     }
+
+     */
 }

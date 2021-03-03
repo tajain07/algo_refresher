@@ -1,11 +1,10 @@
 package heap;
 
-import javafx.util.Pair;
 
 import java.util.PriorityQueue;
 
 public class KClosestPointsToOrigin {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         int[][] a = { { 1, 3 }, { -2, 2 }, { 5, 8 }, { 0, 1 } };
         KClosestPointsToOrigin kClosestPointsToOrigin = new KClosestPointsToOrigin();
         int k = 2;
@@ -37,5 +36,5 @@ public class KClosestPointsToOrigin {
         }
 
         return answer;
-    }
+    }*/
 }

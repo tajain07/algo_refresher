@@ -1,6 +1,5 @@
 package stack;
 
-import javafx.util.Pair;
 
 import java.util.Stack;
 
@@ -10,6 +9,7 @@ import java.util.Stack;
  */
 public class MaximumAreaOfHistogram {
 
+    /*
     public static void main(String[] args) {
         int[] a = { 6, 2, 5, 4, 5, 1, 6 };
         MaximumAreaOfHistogram maximumAreaOfHistogram = new MaximumAreaOfHistogram();
@@ -88,6 +88,8 @@ public class MaximumAreaOfHistogram {
 
         return answer;
     }
+
+     */
 
 }
 
