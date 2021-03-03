@@ -1,6 +1,6 @@
 Refreshing Algorithms and Data-structures 
 
-## Binary Lifting -
+## Binary Lifting :weight_lifting:-
 
 <p align="center">
     <img align="center" src="https://github.com/tajain07/algo_refresher/blob/master/src/main/java/tree/binary_lifting_tree.png">
@@ -9,3 +9,5 @@ Refreshing Algorithms and Data-structures
 <a href="https://github.com/tajain07/algo_refresher/blob/master/src/main/java/tree/BinarySearchTree.java">
   Java Code
 </a>
+
+## Test
