@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SortAnArray {
 
-    public static final InsertInArray insertObj = new InsertInArray();
+    public static final InsertInSortedArray sortedArray = new InsertInSortedArray();
 
     public static void main(String[] args) {
         List <Integer> list = new ArrayList <Integer>(Arrays.asList(61, 60, 59, -15, 115, 58, 57));
@@ -21,6 +21,11 @@ public class SortAnArray {
 
     }
 
+    /**
+     *
+     * @param a
+     * @param n
+     */
     private static void sortRecusiveAndRecursiveInsertion(List <Integer> a, int n) {
         if (n == 0)
             return;
@@ -28,10 +33,14 @@ public class SortAnArray {
         int temp = a.remove(n);
         sortRecusiveAndRecursiveInsertion(a, n - 1);
 
-        insertObj.insert(a, temp);
-
+        sortedArray.insert(a, temp);
     }
 
+    /**
+     *
+     * @param a
+     * @param n
+     */
     private static void sortRecusiveAndIterativeInsertion(int[] a, int n) {
         if (n == 0)
             return;

@@ -46,13 +46,6 @@ public class BinaryLifting {
 
         if (a == b)
             return a;
-        /*
-        while (LCA[a][0] != LCA[b][0]) {
-
-            a = LCA[a][0];
-            b = LCA[b][0];
-        }
-        */
 
         for (int i = maxN; i >= 0; i--) {
             if (memo[a][i] != -1 && (memo[a][i] != memo[b][i])) {

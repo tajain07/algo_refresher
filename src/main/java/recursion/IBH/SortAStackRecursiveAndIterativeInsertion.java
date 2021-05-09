@@ -3,12 +3,14 @@ package recursion.IBH;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class SortAStack {
+public class SortAStackRecursiveAndIterativeInsertion {
     public static void main(String[] args) {
         Integer a[] = { -1, 5, 1, 0, 2 };
         //Integer a[] = { 0, 1, 3, 5 };
         Stack <Integer> inputStack = new Stack <>();
         inputStack.addAll(Arrays.asList(a));
+
+
         sortStack(inputStack);
 
         //insert(inputStack, 0);
@@ -24,22 +26,9 @@ public class SortAStack {
         int value = inputStack.pop();
         sortStack(inputStack);
 
-        insert(inputStack, value);
+        insertIterative(inputStack, value);
     }
 
-    private static void insert(Stack <Integer> inputStack, int value) {
-
-        if (inputStack.size() == 0 || inputStack.peek() <= value) {
-            inputStack.push(value);
-            return;
-        }
-
-        final Integer popedElement = inputStack.pop();
-        insert(inputStack, value);
-
-        inputStack.push(popedElement);
-
-    }
 
     private static void insertIterative(Stack <Integer> inputStack, int value) {
 
