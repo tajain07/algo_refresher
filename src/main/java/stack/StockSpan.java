@@ -9,40 +9,30 @@ import java.util.Stack;
  * https://www.geeksforgeeks.org/the-stock-span-problem/
  */
 public class StockSpan {
-    /*
+
     public static void main(String[] args) {
-        int a[] = { 100, 80, 60, 70, 60, 75, 85 };
+        int a[] = {31, 27, 14, 21, 30, 22};
         StockSpan stockSpan = new StockSpan();
-        int[] span = stockSpan.stockSpanUsingStack(a);
+        int[] span = stockSpan.stockSpan(a);
         System.out.println(Arrays.toString(span));
     }
 
-    private int[] stockSpanUsingStack(int[] a) {
+    public static int[] stockSpan(int[] input) {
 
-        Stack <Pair <Integer, Integer>> stack = new Stack <>();
-        int[] answer = new int[a.length];
-        int index = 0;
+        int[] output = new int[input.length];
+        Stack<int[]> stack = new Stack<>();
 
-        for (int i = 0; i < a.length; i++) {
+        for (int index = 0; index < input.length; index++) {
 
-            int num = a[i];
-
-            while (stack.size() > 0 && stack.peek().getKey() < num) {
+            while (!stack.isEmpty() && input[index] >= stack.peek()[0]) {
                 stack.pop();
             }
 
-            if (stack.size() == 0) {
-                answer[index] = 1;
-            } else {
-                answer[index] = i - stack.peek().getValue();
-            }
+            output[index] = stack.isEmpty() ? 1 : index - stack.peek()[1];
+            stack.push(new int[]{input[index], index});
 
-            index++;
-            stack.push(new Pair <>(num, i));
         }
+        return output;
 
-        return answer;
     }
-
-     */
 }
