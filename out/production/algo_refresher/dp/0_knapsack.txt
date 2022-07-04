@@ -1,0 +1,16 @@
+int knapsack(int[] weights, int[] values, int W, int n){
+	
+	//base condition
+	if(n==0 || W ==0)
+		return 0;
+	
+	if(weights[n-1] <= W){
+	
+		return Math.max(values[n-1] + knapsack(weights, values, W - weights[n-1], n-1), 
+							knapsack(weights, values, W, n-1));
+	
+	}
+	else{
+		return knapsack(weights, values, W, n-1);
+	}
+}

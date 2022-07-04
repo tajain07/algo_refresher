@@ -1,2 +1,4 @@
 target/
 *.iml
+hs_err_pid27428.log
+replay_pid27428.log
