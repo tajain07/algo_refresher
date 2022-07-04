@@ -7,8 +7,8 @@ public class SubsetSumProblemBottomUp {
     private static boolean[][] t;
 
     public static void main(String[] args) {
-        int[] a = new int[] { 1, 1, 2, 5, 3 };
-        int sum = 6;
+        int[] a = new int[]{2, 3, 7, 8, 10};
+        int sum = 14;
 
         t = new boolean[a.length + 1][sum + 1];
 
@@ -26,25 +26,26 @@ public class SubsetSumProblemBottomUp {
 
     private static boolean isSubsetSum(int[] a, int n, int sum) {
 
-        for (int i = 0; i < n + 1; i++) {
-            for (int j = 0; j < sum + 1; j++) {
-                if (i == 0)
-                    t[i][j] = false;
+        for (int row = 0; row <= n; row++) {
+            for (int col = 0; col <= sum; col++) {
+                if (row == 0)
+                    t[row][col] = false;
 
-                if (j == 0)
-                    t[i][j] = true;
+                //we give preference to true over false
+                if (col == 0)
+                    t[row][col] = true;
 
             }
         }
 
-        for (int i = 1; i < n + 1; i++) {
-            for (int j = 1; j < sum + 1; j++) {
+        for (int row = 1; row <= n; row++) {
+            for (int col = 1; col <= sum; col++) {
 
-                if (a[i - 1] <= j) {
-                    t[i][j] = (t[i - 1][j] || t[i -1][j - a[i - 1]]);
+                if (a[row - 1] <= col) {
+                    t[row][col] = (t[row - 1][col] || t[row - 1][col - a[row - 1]]);
 
                 } else {
-                    t[i][j] = t[i - 1][j];
+                    t[row][col] = t[row - 1][col];
                 }
             }
         }

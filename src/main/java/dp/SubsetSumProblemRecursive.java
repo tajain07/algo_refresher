@@ -2,11 +2,12 @@ package dp;
 
 public class SubsetSumProblemRecursive {
     public static void main(String[] args) {
-        int a[] = new int[] {3, 34, 4, 12, 5, 2};
-        int sum = 30;
+        int a[] = new int[]{3, 34, 4, 12, 5, 2};
+        int sum = 34;
 
         boolean value = isSubsetSum(a, a.length, sum);
         System.out.println(value);
+
     }
 
     private static boolean isSubsetSum(int[] a, int n, int sum) {
@@ -22,4 +23,6 @@ public class SubsetSumProblemRecursive {
         }
 
     }
+
+
 }
