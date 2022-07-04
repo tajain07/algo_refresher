@@ -1,0 +1,25 @@
+int[][] static t = new int[102][1002];
+
+int knapsack(int[] weights, int[] values, int W, int n){
+	
+	//base condition
+	if(n==0 || W ==0)
+		return 0;
+	
+	if(t[n][w] != -1)
+		return t[n][w];
+		
+	if(weights[n-1] <= W){
+	
+		int result = Math.max(values[n-1] + knapsack(weights, values, W - weights[n-1], n-1), 
+							knapsack(weights, values, W, n-1));
+	
+		t[n][w] = result;
+		return result;
+	}
+	else{
+		int result = knapsack(weights, values, W, n-1);
+		t[n][w] = result;
+		return result;
+	}
+}
