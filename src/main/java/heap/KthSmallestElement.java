@@ -12,17 +12,17 @@ import java.util.Arrays;
  */
 public class KthSmallestElement {
     public static void main(String[] args) {
-        int a[] = { 20, 10, 4, 3, 7, 11, 15 };
+        Integer a[] = {20, 10, 4, 3, 7, 11, 15};
         int k = 3;
 
         int kSmallestElement = kSmallestUsingSorting(a, k);
-        System.out.println("k " + k + " smallest element : " + kSmallestElement);
+        System.out.println("kSmallestUsingSorting, k " + k + " smallest element : " + kSmallestElement);
 
         kSmallestElement = kSmallestUsingHeap(a, k);
-        System.out.println("k " + k + " smallest element : " + kSmallestElement);
+        System.out.println("kSmallestUsingHeap " + "k " + k + " smallest element : " + kSmallestElement);
 
         kSmallestElement = kSmallestUsingHeapRemovingKElement(a, k);
-        System.out.println("k " + k + " smallest element : " + kSmallestElement);
+        System.out.println("kSmallestUsingHeapRemovingKElement, k " + k + " smallest element : " + kSmallestElement);
     }
 
     /**
@@ -30,7 +30,7 @@ public class KthSmallestElement {
      * @param k
      * @return
      */
-    private static int kSmallestUsingHeap(int[] a, int k) {
+    public static int kSmallestUsingHeap(Integer[] a, int k) {
 
         MaxHeap maxHeap = new MaxHeap(k + 1);
 
@@ -51,11 +51,11 @@ public class KthSmallestElement {
      * @param k
      * @return
      */
-    private static int kSmallestUsingHeapRemovingKElement(int[] a, int k) {
+    private static int kSmallestUsingHeapRemovingKElement(Integer[] a, int k) {
 
         MaxHeap maxHeap = new MaxHeap(a);
 
-        for (int i = 0; i < a.length - k; i++) {
+        for (int i = 0; i < a.length - k - 1; i++) {
             maxHeap.extractMax();
         }
         return maxHeap.extractMax();
@@ -63,7 +63,7 @@ public class KthSmallestElement {
     }
 
     //O(nLogn)
-    private static int kSmallestUsingSorting(int[] a, int k) {
+    private static int kSmallestUsingSorting(Integer[] a, int k) {
         //sort array
         Arrays.sort(a);
         return a[k - 1];

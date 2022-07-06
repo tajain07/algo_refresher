@@ -1,43 +1,41 @@
 package heap;
 
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.PriorityQueue;
+import javafx.util.Pair;
+
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FrequencySort {
-    /*
+
 
     public static void main(String[] args) {
-        Integer a[] = { 1, 1, 1, 3, 2, 2, 4 };
+        Integer[] a = {1, 1, 1, 3, 2, 2, 4};
         final int[] ints = freqSort(a);
         System.out.println(Arrays.toString(ints));
     }
 
-    private static int[] freqSort(Integer[] a) {
+    private static int[] freqSort(Integer[] nums) {
+        PriorityQueue<Pair<Integer, Integer>> maxHeap = new PriorityQueue<>(nums.length, (o1, o2) -> o2.getKey() - o1.getKey());
 
-        int[] answer = new int[a.length];
+        final Map<Integer, Long> freqMap = Arrays.stream(nums).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        final Map <Integer, Long> frequencyMap = Arrays.stream(a).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        PriorityQueue <Pair <Integer, Long>> maxHeap = new PriorityQueue <Pair <Integer, Long>>(a.length, ((o1, o2) -> (int) (o2.getValue() - o1.getValue())));
-
-        for (Map.Entry <Integer, Long> entry : frequencyMap.entrySet()) {
-            maxHeap.add(new Pair <>(entry.getKey(), entry.getValue()));
+        for (Map.Entry<Integer, Long> entry : freqMap.entrySet()) {
+            maxHeap.add(new Pair<>(Math.toIntExact(entry.getValue()), entry.getKey()));
         }
 
-        int index = 0;
+        int[] response = new int[nums.length];
+        int i = 0;
         while (maxHeap.size() > 0) {
-            final Pair <Integer, Long> pair = maxHeap.poll();
-            int frequency = Math.toIntExact(pair.getValue());
-            for (int i = 0; i < frequency; i++) {
-                answer[index++] = pair.getKey();
+            final Pair<Integer, Integer> pair = maxHeap.poll();
+            final Integer freq = pair.getKey();
+            final Integer num = pair.getValue();
+            for (int k = 0; k < freq; k++) {
+                response[i++] = num;
             }
         }
-
-        return answer;
+        return response;
     }
 
-     */
 }

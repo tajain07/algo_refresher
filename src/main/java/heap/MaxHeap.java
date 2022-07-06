@@ -4,20 +4,20 @@ import java.util.Arrays;
 
 public class MaxHeap {
 
-    private int[] heap;
-    private int   size;
-    private int   capacity;
+    private Integer[] heap;
+    private int size;
+    private int capacity;
 
     public MaxHeap(int heapSize) {
         this.size = 0;
         this.capacity = heapSize;
-        this.heap = new int[capacity];
+        this.heap = new Integer[heapSize];
     }
 
-    public MaxHeap(int[] a) {
-        this.size = a.length - 1;
+    public MaxHeap(Integer[] a) {
+        this.size = a.length;
         this.capacity = a.length;
-        this.heap = a;
+        this.heap = a.clone();
         buildMaxHeap();
     }
 
@@ -69,7 +69,7 @@ public class MaxHeap {
 
     public void buildMaxHeap() {
 
-        int totalNodes = (size - 1);
+        int totalNodes = (size);
 
         for (int parentIndex = totalNodes / 2; parentIndex >= 0; parentIndex--) {
             maxHeapify(parentIndex);
@@ -96,21 +96,21 @@ public class MaxHeap {
     private void ensureCapacity() {
 
         if (size >= capacity) {
-            int[] newArray;
+            Integer[] newArray;
             newArray = Arrays.copyOf(heap, capacity * 2);
             this.heap = newArray;
             capacity = capacity * 2;
         }
     }
 
-    public int[] getHeap() {
+    public Integer[] getHeap() {
         return heap.clone();
     }
 
     public int extractMax() {
         int maxElement = heap[0];
-        heap[0] = heap[size];
-        heap[size] = 0;
+        heap[0] = heap[size - 1];
+        heap[size - 1] = 0;
         size--;
 
         maxHeapify(0);

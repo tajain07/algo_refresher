@@ -3,15 +3,15 @@ package heap;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class PriorityQueue {
+public class PriorityQueueImpl {
 
     private Vector <Integer> A;
 
-    public PriorityQueue() {
+    public PriorityQueueImpl() {
         A = new Vector <>();
     }
 
-    public PriorityQueue(int capacity) {
+    public PriorityQueueImpl(int capacity) {
         A = new Vector <>(capacity);
     }
 
@@ -170,7 +170,7 @@ public class PriorityQueue {
     public static void main(String[] args) {
         // create a Priority Queue of initial capacity 10
         // Priority of an element is decided by element's value
-        PriorityQueue pq = new PriorityQueue(10);
+        PriorityQueueImpl pq = new PriorityQueueImpl(10);
 
         // insert three integers
         pq.add(3);

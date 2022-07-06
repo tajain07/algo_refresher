@@ -1,9 +1,11 @@
 package playground;
 
-public class Employee {
+import java.util.Comparator;
+
+public class Employee implements Comparable<Employee> {
 
     String name;
-    int    age;
+    int age;
 
     public Employee(String name) {
         this.name = name;
@@ -30,11 +32,24 @@ public class Employee {
         this.age = age;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         final StringBuilder sb = new StringBuilder("Employee{");
         sb.append("name='").append(name).append('\'');
         sb.append(", age=").append(age);
         sb.append('}');
         return sb.toString();
+    }
+
+
+    @Override
+    public int compareTo(Employee o) {
+        //final int age = o.getAge() - this.getAge();
+        //System.out.println("o " + o + ", this " + this + ", age " + age);
+
+
+        final int age = this.getAge() - o.getAge();
+        System.out.println("this " + this + ", o " + o + ", age " + age);
+        return age;
     }
 }
