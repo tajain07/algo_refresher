@@ -2,7 +2,9 @@ package recursion.IBH;
 
 import tree.BinarySearchTree;
 
+
 public class HeightOfABinaryTree {
+/*
     public static void main(String[] args) {
         BinarySearchTree.Node root = new BinarySearchTree.Node(10);
         root.left = new BinarySearchTree.Node(9);
@@ -25,5 +27,5 @@ public class HeightOfABinaryTree {
         //Hypothesis - end
 
         return Math.max(left_height, right_height) + 1; //induction
-    }
+    }*/
 }

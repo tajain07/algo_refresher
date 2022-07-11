@@ -1,33 +1,20 @@
 package tree;
 
 public class BinarySearchTree {
-
-    public static class Node {
-        public Node left;
-        public Node right;
-        int data;
-
-        public Node(int data) {
-            this.data = data;
-        }
-
-        public Node getLeft() {
-            return this.left;
-        }
-
-        public Node getRight() {
-            return this.right;
-        }
-    }
-
     Node root;
 
     public BinarySearchTree() {
+        root = null;
+    }
+
+    public BinarySearchTree(Node rootNode) {
+        this.root = rootNode;
     }
 
     public void insert(int key) {
         root = insertRec(root, key);
     }
+
 
     private Node insertRec(Node root, int key) {
         if (root == null) {
@@ -35,53 +22,30 @@ public class BinarySearchTree {
             return root;
         }
 
-        if (root.data > key) {
+        if (key <= root.data)
             root.left = insertRec(root.left, key);
-        } else {
+        else
             root.right = insertRec(root.right, key);
-        }
 
-        return root;
-    }
-
-    public void inorder() {
-        inOrderRec(root);
-    }
-
-    //Left Root Right
-    private void inOrderRec(Node root) {
-        if (root != null) {
-            inOrderRec(root.left);
-            System.out.print(root.data + " ");
-            inOrderRec(root.right);
-        }
-    }
-
-
-    public Node getRoot() {
         return root;
     }
 
     public static void main(String[] args) {
-        BinarySearchTree tree = new BinarySearchTree();
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(12);
+        bst.insert(10);
+        bst.insert(9);
+        bst.insert(11);
+        bst.insert(16);
+        bst.insert(14);
+        bst.insert(18);
 
-         /* Let us create following BST
-              50
-           /     \
-          30      70
-         /  \    /  \
-       20   40  60   80 */
+        InorderTraversal.printInorderTraversal(bst, false);
+        PreorderTraversal.printPreorderTraversal(bst, false);
+        PostorderTraversal.printPostorderTraversal(bst);
+        LevelOrderTraversal.printLevelOrderTraversal(bst);
 
-        tree.insert(50);
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(40);
-        tree.insert(70);
-        tree.insert(60);
-        tree.insert(80);
-
-        // print inorder traversal of the BST
-        tree.inorder();
     }
+
 }
 

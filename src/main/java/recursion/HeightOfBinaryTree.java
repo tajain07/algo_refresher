@@ -2,7 +2,9 @@ package recursion;
 
 import tree.BinarySearchTree;
 
+
 public class HeightOfBinaryTree {
+    /*
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
         tree.insert(50);
@@ -30,5 +32,5 @@ public class HeightOfBinaryTree {
         return Math.max(height(left), height(right)) + 1;
     }
 
-
+*/
 }
