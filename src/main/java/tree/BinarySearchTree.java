@@ -1,14 +1,24 @@
 package tree;
 
+/**
+ *      12
+ *      / \
+ *     /   \
+ *    /     \
+ *   10     16
+ *  / \     / \
+ * 9  11   /   \
+ *        14   18
+ */
 public class BinarySearchTree {
-    Node root;
+    TreeNode root;
 
     public BinarySearchTree() {
         root = null;
     }
 
-    public BinarySearchTree(Node rootNode) {
-        this.root = rootNode;
+    public BinarySearchTree(TreeNode rootTreeNode) {
+        this.root = rootTreeNode;
     }
 
     public void insert(int key) {
@@ -16,13 +26,13 @@ public class BinarySearchTree {
     }
 
 
-    private Node insertRec(Node root, int key) {
+    private TreeNode insertRec(TreeNode root, int key) {
         if (root == null) {
-            root = new Node(key);
+            root = new TreeNode(key);
             return root;
         }
 
-        if (key <= root.data)
+        if (key <= root.val)
             root.left = insertRec(root.left, key);
         else
             root.right = insertRec(root.right, key);
@@ -42,8 +52,8 @@ public class BinarySearchTree {
 
         InorderTraversal.printInorderTraversal(bst, false);
         PreorderTraversal.printPreorderTraversal(bst, false);
-        PostorderTraversal.printPostorderTraversal(bst);
-        LevelOrderTraversal.printLevelOrderTraversal(bst);
+        PostorderTraversal.printPostorderTraversal(bst, false);
+        LevelOrderTraversal.print(bst);
 
     }
 

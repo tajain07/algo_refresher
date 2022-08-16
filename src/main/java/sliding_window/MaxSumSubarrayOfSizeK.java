@@ -39,17 +39,17 @@ public class MaxSumSubarrayOfSizeK {
         return maxSum;
     }
 
-    public static int maxSumSlidingWindow(int K, ArrayList<Integer> Arr, int N) {
+    public static int maxSumSlidingWindow(int K, ArrayList<Integer> nums, int N) {
         int i = 0, j = 0;
-        int maxSum = 0, runningSum = 0;
+        int maxSum = Integer.MIN_VALUE, runningSum = 0;
 
-        while (j < Arr.size()) {
-            runningSum = runningSum + Arr.get(j);
+        while (j < N) {
+            runningSum = runningSum + nums.get(j);
             if (j - i + 1 < K) {
                 j++;
             } else if (j - i + 1 == K) {
                 maxSum = Math.max(maxSum, runningSum);
-                runningSum = runningSum - Arr.get(i);
+                runningSum = runningSum - nums.get(i);
                 i++;
                 j++;
             }

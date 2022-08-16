@@ -36,61 +36,64 @@ public class NegativeNumberInWindowK {
         Arr.add(28);
 
         ArrayList<Integer> result = firstNegativeBruteForce(Arr, 3);
-        System.out.println(result.toString());
+        System.out.println(result);
 
         result = firstNegativeSlidingWindow(Arr, 3);
-        System.out.println(result.toString());
+        System.out.println(result);
 
 
     }
 
-    private static ArrayList<Integer> firstNegativeSlidingWindow(ArrayList<Integer> arr, int K) {
-        int i = 0, j = 0;
-        ArrayList<Integer> runningArray = new ArrayList<Integer>();
-        ArrayList<Integer> result = new ArrayList<Integer>();
+    private static ArrayList<Integer> firstNegativeSlidingWindow(ArrayList<Integer> arr, int windowSize) {
+        int n = arr.size();
+        ArrayList<Integer> result = new ArrayList<>();
+        ArrayList<Integer> runningNumbers = new ArrayList<>();
 
-        while (j < arr.size()) {
-            if (arr.get(j) < 0) {
-                runningArray.add(arr.get(j));
-            }
-            if (j - i + 1 < K) {
+        int j = 0, i = 0;
+        while (j < n) {
+            if (arr.get(j) < 0) runningNumbers.add(arr.get(j));
+
+            if (j - i + 1 < windowSize) {
                 j++;
-            } else if (j - i + 1 == K) {
-                if (runningArray.size() == 0)
+            } else if (j - i + 1 == windowSize) {
+                if (runningNumbers.size() == 0)
                     result.add(0);
                 else {
-                    result.add(runningArray.get(0));
-                    int iNum = arr.get(i);
-                    if (iNum == runningArray.get(0)) {
-                        runningArray.remove(0);
-                    }
+                    result.add(runningNumbers.get(0));
+                    final Integer windowStartNumber = arr.get(i);
+                    if (runningNumbers.get(0).equals(windowStartNumber))
+                        runningNumbers.remove(0);
                 }
-                i++;
                 j++;
+                i++;
             }
-        }
 
+        }
         return result;
     }
 
-    private static ArrayList<Integer> firstNegativeBruteForce(ArrayList<Integer> arr, int K) {
+    private static ArrayList<Integer> firstNegativeBruteForce(ArrayList<Integer> arr, int windowSize) {
+        int n = arr.size();
+        ArrayList<Integer> result = new ArrayList<>(arr.size() - windowSize + 1);
 
-        ArrayList<Integer> result = new ArrayList<>();
         for (int i = 0; i < arr.size(); i++) {
             int j = 0;
-            while (j < K && i + j < arr.size()) {
+            while (j < windowSize && i + j < n) {
                 if (arr.get(i + j) < 0) {
                     result.add(arr.get(i + j));
                     break;
                 }
+                //System.out.println(arr.get(i+j));
                 j++;
             }
 
-            //We have exhausted our window but not found any negative integer so add 0 as per question
-            if (j == K) {
+            //not able to find negative number in the window
+            if (j == windowSize)
                 result.add(0);
-            }
+
         }
         return result;
     }
+
+
 }

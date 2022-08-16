@@ -10,8 +10,6 @@ public class ReverseAStack {
         stack.push(2);
         stack.push(1);
 
-        //       insertAtTheEnd(stack, 5);
-
         System.out.println("Before reverse " + stack);
         reverseStack(stack);
         System.out.println("After reverse " + stack);

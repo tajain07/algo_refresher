@@ -24,8 +24,46 @@ public class LongestSubStringWithKUniqueCharacters {
     public static void main(String[] args) {
         String S = "aabacbebebe";
         int K = 3;
-        final int result = longestkSubstr(S, K);
+        int result = longestkSubstr(S, K);
         System.out.println("result " + result);
+
+        result = maxWindowSizeForKUniqueCharacters(S.toCharArray(), K);
+        System.out.println("result " + result);
+    }
+
+    // 4 1 1 1 2 3 5, sum = 4
+    public static int maxWindowSizeForKUniqueCharacters(char[] arr, int k) {
+
+        int maxWindowSize = 0, i = 0, j = 0, n = arr.length;
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+
+        while (j < n) {
+
+            char c = arr[j];
+            int currentCount = charCountMap.getOrDefault(c, 0);
+            charCountMap.put(c, ++currentCount);
+
+            if (charCountMap.size() == k) {
+                maxWindowSize = Math.max(j - i + 1, maxWindowSize);
+            } else if (charCountMap.size() > k) {
+                {
+                    while (charCountMap.size() > k) {
+                        char chatAtI = arr[i++];
+                        int count = charCountMap.get(chatAtI) - 1;
+                        if (count == 0)
+                            charCountMap.remove(chatAtI);
+                        else
+                            charCountMap.put(chatAtI, count);
+                    }
+                }
+
+            }
+            j++;
+
+
+        }
+        return maxWindowSize;
 
     }
 

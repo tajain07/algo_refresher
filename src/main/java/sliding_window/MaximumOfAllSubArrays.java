@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
-    https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbi1IcWVBdV9vMjZNbEt6enFXVE9UQ01iVU1aZ3xBQ3Jtc0tuNHBwektsa1Q4NDdWTVZxUlRISWtIZ2NLNWd5blZaUVd6QWpRb1JhVTBWRV9YZllBT0psMU5JR1dJUmhWdFN4RXNYVDRxNHBJbTNKc1h2NXBaTUM0QjdocFFDVTNsR3NGWW1QRXoyVzNFRVBVSVdrVQ&q=https%3A%2F%2Fwww.interviewbit.com%2Fproblems%2Fsliding-window-maximum%2F%23
+    https://www.interviewbit.com/problems/sliding-window-maximum/
 
     Given an array arr[] of size N and an integer K.
     Find the maximum for each and every contiguous
@@ -21,15 +21,56 @@ import java.util.stream.Collectors;
  */
 public class MaximumOfAllSubArrays {
     public static void main(String[] args) {
-        int[] inputArr = new int[]{542, 178, 637, 446, 882, 760, 354, 523, 935, 277, 158, 698, 536, 165, 892, 327, 574, 516, 36, 705, 900, 482, 558, 937, 207, 368};
+        //int[] inputArr = new int[]{542, 178, 637, 446, 882, 760, 354, 523, 935, 277, 158, 698, 536, 165, 892, 327, 574, 516, 36, 705, 900, 482, 558, 937, 207, 368};
+        int[] inputArr = new int[]{4, -1, 3, 2, 4, 3, 6, 7};
 
         final List<Integer> arr = Arrays.stream(inputArr).boxed().collect(Collectors.toList());
 
-        int k = 9;
+        int k = 3;
 
         final ArrayList<Integer> result = slidingMaximum(arr, k);
         System.out.println(result);
 
+
+        final List<Integer> result1 = maxFromEachSubArray(inputArr, k);
+        System.out.println(result1);
+
+
+    }
+
+
+    //Both methods are using same approach, it's just they are written little different [two way to write same code]
+    private static List<Integer> maxFromEachSubArray(final int[] arr, int k) {
+        int n = arr.length;
+        int i = 0, j = 0;
+
+        List<Integer> result = new ArrayList<>();
+        Queue<Integer> maxNumsQueue = new LinkedList<>();
+
+        while (j < n) {
+            int newNum = arr[j];
+            while (!maxNumsQueue.isEmpty() && maxNumsQueue.peek() < newNum) {
+                maxNumsQueue.poll();
+            }
+            maxNumsQueue.offer(newNum);
+
+            if (j - i + 1 < k) {
+                j++;
+            } else if (j - i + 1 == k) {
+
+                result.add(maxNumsQueue.peek());
+                int numToBeOutOfWindow = arr[i];
+                if (maxNumsQueue.peek() != null && maxNumsQueue.peek() == numToBeOutOfWindow)
+                    maxNumsQueue.poll();
+
+                i++;
+                j++;
+            }
+
+
+        }
+
+        return result;
     }
 
     public static ArrayList<Integer> slidingMaximum(final List<Integer> A, int B) {

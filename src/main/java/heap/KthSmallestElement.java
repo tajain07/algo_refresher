@@ -12,17 +12,39 @@ import java.util.Arrays;
  */
 public class KthSmallestElement {
     public static void main(String[] args) {
-        Integer a[] = {20, 10, 4, 3, 7, 11, 15};
+        Integer a[] = {20, 10, 4, 3, 7, 11, 15, 1};
         int k = 3;
 
-        int kSmallestElement = kSmallestUsingSorting(a, k);
+        final Integer[] aCopy = Arrays.copyOf(a, a.length);
+        int kSmallestElement = kSmallestUsingSorting(aCopy, k);
         System.out.println("kSmallestUsingSorting, k " + k + " smallest element : " + kSmallestElement);
 
         kSmallestElement = kSmallestUsingHeap(a, k);
         System.out.println("kSmallestUsingHeap " + "k " + k + " smallest element : " + kSmallestElement);
 
+        kSmallestElement = kSmallestUsingHeapCompareWithArray(a, k);
+        System.out.println("kSmallestUsingHeap " + "k " + k + " smallest element : " + kSmallestElement);
+
         kSmallestElement = kSmallestUsingHeapRemovingKElement(a, k);
         System.out.println("kSmallestUsingHeapRemovingKElement, k " + k + " smallest element : " + kSmallestElement);
+    }
+
+    private static int kSmallestUsingHeapCompareWithArray(Integer[] a, int k) {
+        int n = a.length;
+        MaxHeap maxHeap = new MaxHeap(k);
+        for (int i = 0; i < k; i++) {
+            maxHeap.insert(a[i]);
+        }
+
+        for (int i = k; i < n; i++) {
+            if (maxHeap.getHeap()[0] > a[i]) {
+                maxHeap.extractMax();
+                maxHeap.insert(a[i]);
+            }
+        }
+
+        //System.out.println(Arrays.toString(maxHeap.getHeap()));
+        return maxHeap.extractMax();
     }
 
     /**
@@ -55,7 +77,7 @@ public class KthSmallestElement {
 
         MaxHeap maxHeap = new MaxHeap(a);
 
-        for (int i = 0; i < a.length - k - 1; i++) {
+        for (int i = 0; i < a.length - k; i++) {
             maxHeap.extractMax();
         }
         return maxHeap.extractMax();

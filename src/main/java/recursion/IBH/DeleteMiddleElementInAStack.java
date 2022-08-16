@@ -1,5 +1,6 @@
 package recursion.IBH;
 
+import java.util.List;
 import java.util.Stack;
 
 public class DeleteMiddleElementInAStack {
@@ -8,15 +9,21 @@ public class DeleteMiddleElementInAStack {
 
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
+        stack.addAll(List.of(new Integer[]{1, 2, 3, 4, 5}));
+
 
         int k = (stack.size() / 2) + 1;
         deleteElementUsingK(stack, k);
         System.out.println(stack);
+
+        //Approach 1 - using k
+        stack = new Stack<>();
+        stack.addAll(List.of(new Integer[]{1, 2, 3, 4, 5}));
+
+        //Approach 2 - using stack size
+        deleteElementUsingStackSize(stack, k - 1);
+        System.out.println(stack);
+
     }
 
 

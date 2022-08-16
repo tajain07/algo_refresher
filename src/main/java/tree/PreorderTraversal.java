@@ -1,6 +1,5 @@
 package tree;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -27,31 +26,31 @@ public class PreorderTraversal {
         }
     }
 
-    private static void preorderTraversalRec(Node node, List<Integer> order) {
-        if (node == null) {
+    private static void preorderTraversalRec(TreeNode treeNode, List<Integer> order) {
+        if (treeNode == null) {
             return;
         }
-        order.add(node.data);
-        preorderTraversalRec(node.left, order);
-        preorderTraversalRec(node.right, order);
+        order.add(treeNode.val);
+        preorderTraversalRec(treeNode.left, order);
+        preorderTraversalRec(treeNode.right, order);
 
     }
 
     //Left Root Right
     //Time Complexity - O(N)
     //Space complexity - O(N) => O(Height of tree)
-    private static void preorderTraversalIterative(Node node, List<Integer> order) {
+    private static void preorderTraversalIterative(TreeNode treeNode, List<Integer> order) {
 
-        if (node == null)
+        if (treeNode == null)
             return;
 
         //LIFO
-        Stack<Node> stack = new Stack<>();
-        stack.add(node);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(treeNode);
 
         while (!stack.isEmpty()) {
-            final Node root = stack.pop();
-            order.add(root.data);
+            final TreeNode root = stack.pop();
+            order.add(root.val);
 
             //Because LIFO put right first
             if (root.right != null) {

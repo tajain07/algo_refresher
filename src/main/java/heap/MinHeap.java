@@ -43,7 +43,7 @@ public class MinHeap {
     }
 
     private int parent(int index) {
-        return index / 2;
+        return (index - 1) / 2;
     }
 
     private int leftChild(int index) {
@@ -90,6 +90,7 @@ public class MinHeap {
         minHeap.insert(4);
         minHeap.insert(12);
         minHeap.insert(1);
+        minHeap.insert(3);
 
         while (minHeap.size > 0) {
             int min = minHeap.extractMin();

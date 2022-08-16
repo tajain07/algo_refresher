@@ -23,37 +23,37 @@ import java.util.Map;
  * <p>
  * Input: s = "a", t = "a"
  * Output: "a"
- *
+ * <p>
  * TODO - Complexity of this algorithm?
  */
 public class MinimumWindowSubstring {
     public static void main(String[] args) {
-        String s = "a";
-        String t = "aa";
+        String s = "totmtapta";
+        String t = "tta";
         String windowLength = minWondowSubString(s, t);
         System.out.println("windowLength " + windowLength);
     }
 
     private static String minWondowSubString(String s, String t) {
-        Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Integer> tStringCharCountMap = new HashMap<>();
 
         for (Character c : t.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
+            tStringCharCountMap.put(c, tStringCharCountMap.getOrDefault(c, 0) + 1);
         }
 
 
-        int i = 0, j = 0, k = map.size(), countOfUniqueCharacter = map.size(), minWindowLength = Integer.MAX_VALUE, iValue = -1, jValue = -1;
+        int i = 0, j = 0, k = tStringCharCountMap.size(), countOfUniqueCharacter = tStringCharCountMap.size(), minWindowLength = Integer.MAX_VALUE, iValue = -1, jValue = -1;
 
         while (j < s.length()) {
             final char charAtJ = s.charAt(j);
 
-            if (map.containsKey(charAtJ)) {
-                final int countCharAtJ = map.get(charAtJ) - 1;
+            if (tStringCharCountMap.containsKey(charAtJ)) {
+                final int countCharAtJ = tStringCharCountMap.get(charAtJ) - 1;
 
                 if (countCharAtJ == 0)
                     countOfUniqueCharacter--;
 
-                map.put(charAtJ, countCharAtJ);
+                tStringCharCountMap.put(charAtJ, countCharAtJ);
 
             }
 
@@ -66,12 +66,14 @@ public class MinimumWindowSubstring {
 
 
                 final char charAtI = s.charAt(i);
-                if (map.containsKey(charAtI)) {
-                    final int countCharAtI = map.get(charAtI) + 1;
+
+                //if character in map, then collect it back and increase its count
+                if (tStringCharCountMap.containsKey(charAtI)) {
+                    final int countCharAtI = tStringCharCountMap.get(charAtI) + 1;
                     if (countCharAtI > 0) {
                         countOfUniqueCharacter++;
                     }
-                    map.put(charAtI, countCharAtI);
+                    tStringCharCountMap.put(charAtI, countCharAtI);
                 }
 
                 i++;
@@ -80,7 +82,7 @@ public class MinimumWindowSubstring {
         }
 
         if (iValue == -1)
-            return "";
+            return "<not found>";
         return s.substring(iValue, jValue + 1);
     }
 

@@ -36,10 +36,10 @@ public class SortAStackRecursiveWithRecursiveInsertion {
             return;
         }
 
-        final Integer popedElement = inputStack.pop();
+        final Integer poppedElement = inputStack.pop();
         insertRecursive(inputStack, value);
 
-        inputStack.push(popedElement);
+        inputStack.push(poppedElement);
 
     }
 }

@@ -11,6 +11,8 @@ public class Factorial {
     }
 
 
+    //n*n-1*n-2...
+    //factorial(n-1)*n
     static BigInteger factorial(int n) {
         if (n == 1) {
             return BigInteger.valueOf(1);

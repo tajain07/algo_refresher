@@ -48,7 +48,7 @@ public class PermutationWithSpaces {
     /**
      * Input - ABC
      * Ouput - ABC
-     *
+     * <p>
      * This method will insert " " in output as per input's length
      *
      * @param input
@@ -91,6 +91,21 @@ public class PermutationWithSpaces {
         output = output + newChar;
 
         permutationWithSpacesMethod2(newInput, output);
+
+    }
+
+    private static void permutationWithSpacesMethod4(String input, String ouput, int index) {
+        if (input.length() == index) {
+            System.out.println(ouput);
+            return;
+        }
+
+
+        permutationWithSpacesMethod4(input, ouput + input.charAt(index), index + 1);
+
+        if (index != 0) {
+            permutationWithSpacesMethod4(input, ouput + ' ' + input.charAt(index), index + 1);
+        }
 
     }
 }
